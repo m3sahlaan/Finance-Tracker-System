@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_main_ace"
+    android:fitsSystemWindows="true">
+
+    <!-- Welcome Card at the top -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/welcomeCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="12dp"
+        app:cardBackgroundColor="#2E2E2E"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/tvWelcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Finance Tracker"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:id="@+id/tvBudgetWarningMain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="#0288D1"
+                android:textSize="16sp"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_marginTop="12dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Center reference point for the circular arrangement -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontalCenterGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/verticalCenterGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <!-- Invisible center point for circular positioning -->
+    <View
+        android:id="@+id/centerPoint"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomButtonsLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeCard" />
+
+    <!-- Circular Button: Add Transaction -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnAddTransaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:backgroundTint="#0288D1"
+        app:tint="#FFFFFF"
+        android:contentDescription="Add Transaction"
+        app:fabSize="normal"
+        app:layout_constraintCircle="@id/centerPoint"
+        app:layout_constraintCircleRadius="140dp"
+        app:layout_constraintCircleAngle="0"
+        app:srcCompat="@drawable/ic_add"
+        android:elevation="8dp"
+        android:stateListAnimator="@animator/button_press_animator"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Circular Button: View Transactions -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnViewTransactions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:backgroundTint="#2E2E2E"
+        app:tint="#FFFFFF"
+        android:contentDescription="View Transactions"
+        app:fabSize="normal"
+        app:layout_constraintCircle="@id/centerPoint"
+        app:layout_constraintCircleRadius="140dp"
+        app:layout_constraintCircleAngle="72"
+        app:srcCompat="@drawable/ic_list"
+        android:elevation="8dp"
+        android:stateListAnimator="@animator/button_press_animator"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Circular Button: Category Chart -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnChart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:backgroundTint="#0288D1"
+        app:tint="#FFFFFF"
+        android:contentDescription="View Category Chart"
+        app:fabSize="normal"
+        app:layout_constraintCircle="@id/centerPoint"
+        app:layout_constraintCircleRadius="140dp"
+        app:layout_constraintCircleAngle="144"
+        app:srcCompat="@drawable/ic_chart"
+        android:elevation="8dp"
+        android:stateListAnimator="@animator/button_press_animator"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Circular Button: Budget -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnBudget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:backgroundTint="#2E2E2E"
+        app:tint="#FFFFFF"
+        android:contentDescription="Track Monthly Budget"
+        app:fabSize="normal"
+        app:layout_constraintCircle="@id/centerPoint"
+        app:layout_constraintCircleRadius="140dp"
+        app:layout_constraintCircleAngle="216"
+        app:srcCompat="@drawable/ic_budget"
+        android:elevation="8dp"
+        android:stateListAnimator="@animator/button_press_animator"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Circular Button: Reminder Settings -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnReminderSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:backgroundTint="#0288D1"
+        app:tint="#FFFFFF"
+        android:contentDescription="Set Daily Reminder Time"
+        app:fabSize="normal"
+        app:layout_constraintCircle="@id/centerPoint"
+        app:layout_constraintCircleRadius="140dp"
+        app:layout_constraintCircleAngle="288"
+        app:srcCompat="@drawable/ic_clock"
+        android:elevation="8dp"
+        android:stateListAnimator="@animator/button_press_animator"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Button Labels -->
+    <TextView
+        android:id="@+id/lblAddTransaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Transaction"
+        android:textSize="14sp"
+        android:textColor="#FFFFFF"
+        android:fontFamily="@font/poppins_medium"
+        app:layout_constraintTop_toBottomOf="@+id/btnAddTransaction"
+        app:layout_constraintStart_toStartOf="@+id/btnAddTransaction"
+        app:layout_constraintEnd_toEndOf="@+id/btnAddTransaction"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/lblViewTransactions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Transactions"
+        android:textSize="14sp"
+        android:textColor="#FFFFFF"
+        android:fontFamily="@font/poppins_medium"
+        app:layout_constraintTop_toBottomOf="@+id/btnViewTransactions"
+        app:layout_constraintStart_toStartOf="@+id/btnViewTransactions"
+        app:layout_constraintEnd_toEndOf="@+id/btnViewTransactions"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/lblChart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Category Chart"
+        android:textSize="14sp"
+        android:textColor="#FFFFFF"
+        android:fontFamily="@font/poppins_medium"
+        app:layout_constraintTop_toBottomOf="@+id/btnChart"
+        app:layout_constraintStart_toStartOf="@+id/btnChart"
+        app:layout_constraintEnd_toEndOf="@+id/btnChart"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/lblBudget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Monthly Budget"
+        android:textSize="14sp"
+        android:textColor="#FFFFFF"
+        android:fontFamily="@font/poppins_medium"
+        app:layout_constraintTop_toBottomOf="@+id/btnBudget"
+        app:layout_constraintStart_toStartOf="@+id/btnBudget"
+        app:layout_constraintEnd_toEndOf="@+id/btnBudget"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/lblReminders"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set Reminder"
+        android:textSize="14sp"
+        android:textColor="#FFFFFF"
+        android:fontFamily="@font/poppins_medium"
+        app:layout_constraintTop_toBottomOf="@+id/btnReminderSettings"
+        app:layout_constraintStart_toStartOf="@+id/btnReminderSettings"
+        app:layout_constraintEnd_toEndOf="@+id/btnReminderSettings"
+        android:layout_marginTop="8dp" />
+
+    <!-- Bottom Import/Export Buttons -->
+    <LinearLayout
+        android:id="@+id/bottomButtonsLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/btnExport"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:text="Export to JSON"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/poppins_medium"
+            android:background="@drawable/button_gradient_export"
+            android:elevation="8dp"
+            android:paddingHorizontal="16dp"
+            android:layout_marginEnd="12dp"
+            android:stateListAnimator="@animator/button_press_animator" />
+
+        <Button
+            android:id="@+id/btnImport"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:text="Import from JSON"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/poppins_medium"
+            android:background="@drawable/button_gradient_import"
+            android:elevation="8dp"
+            android:paddingHorizontal="16dp"
+            android:layout_marginStart="12dp"
+            android:stateListAnimator="@animator/button_press_animator" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
